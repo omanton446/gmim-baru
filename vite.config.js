@@ -5,12 +5,18 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: [],
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', '@supabase/supabase-js'],
-        },
-      },
+      // Pakai function untuk manualChunks (bukan object!)
+      manualChunks: (id) => {
+        if (id.includes('node_modules')) {
+          if (id.includes('@supabase')) {
+            return 'supabase'
+          }
+          if (id.includes('react') || id.includes('react-dom')) {
+            return 'react-vendor'
+          }
+          return 'vendor'
+        }
+      }
     },
     commonjsOptions: {
       include: [/node_modules/],
