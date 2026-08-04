@@ -17,7 +17,6 @@ function Navbar({
         <span className="navbar-subtitle">Arsip</span>
       </div>
 
-      {/* Tombol Hamburger */}
       <button 
         className={`navbar-hamburger ${isDropdownOpen ? 'active' : ''}`}
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -28,7 +27,6 @@ function Navbar({
         <span></span>
       </button>
 
-      {/* Dropdown Menu */}
       <div className={`navbar-dropdown ${isDropdownOpen ? 'open' : ''}`}>
         <button 
           className={`navbar-link ${activePage === 'dashboard' ? 'active' : ''}`}
@@ -76,7 +74,6 @@ function Navbar({
 
         <div className="navbar-divider"></div>
 
-        {/* Login / Logout */}
         {!isAdmin ? (
           <button 
             className="navbar-link navbar-login-btn"

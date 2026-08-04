@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { supabase } from './lib/supabase'
 import './App.css'
 
-// Import komponen
+// Import semua komponen
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
 import DokumenForm from './components/DokumenForm'
@@ -300,7 +300,6 @@ function App() {
   // ============================================================
   return (
     <div className="app-container">
-      {/* Navbar */}
       <Navbar 
         isAdmin={isAdmin}
         onLogout={logout}
@@ -311,10 +310,9 @@ function App() {
         setIsDropdownOpen={setIsDropdownOpen}
       />
 
-      {/* Content */}
       <main className="main-fullscreen">
         <div className="container-full">
-          {/* Header */}
+          {/* HEADER */}
           <div className="header-full">
             <div className="header-left">
               <h1>
@@ -333,24 +331,30 @@ function App() {
             </div>
           </div>
 
-          {/* Login Box */}
-          {showLogin && !isAdmin && (
-            <LoginBox 
-              username={username}
-              setUsername={setUsername}
-              password={password}
-              setPassword={setPassword}
-              loginError={loginError}
-              onLogin={loginAdmin}
-            />
-          )}
+        {/* LOGIN */}
+{showLogin && !isAdmin && (
+  <LoginBox 
+    username={username}
+    setUsername={setUsername}
+    password={password}
+    setPassword={setPassword}
+    loginError={loginError}
+    onLogin={loginAdmin}
+    onCancel={() => {
+      setShowLogin(false)
+      setLoginError('')
+      setUsername('')
+      setPassword('')
+    }}
+  />
+)}
 
-          {/* Dashboard */}
+          {/* DASHBOARD */}
           {activePage === 'dashboard' && (
             <Dashboard dokumen={dokumen} loading={loading} />
           )}
 
-          {/* Dokumen */}
+          {/* DOKUMEN */}
           {activePage === 'dokumen' && (
             <>
               <DokumenForm 
@@ -361,7 +365,6 @@ function App() {
                 kategori={kategori} setKategori={setKategori}
                 isi={isi} setIsi={setIsi}
                 file={file} setFile={setFile}
-                filePreview={filePreview}
                 uploading={uploading}
                 onSave={editingId ? updateDokumen : tambahDokumen}
                 onCancel={resetForm}
@@ -378,17 +381,17 @@ function App() {
             </>
           )}
 
-          {/* Files */}
+          {/* FILES */}
           {activePage === 'files' && (
             <FileList dokumen={dokumen} loading={loading} />
           )}
 
-          {/* Admin Panel */}
+          {/* ADMIN */}
           {activePage === 'admin' && isAdmin && (
             <AdminPanel dokumen={dokumen} />
           )}
 
-          {/* Footer */}
+          {/* FOOTER */}
           <div className="footer-full">
             <span><i className="fas fa-database"></i> Supabase</span>
             <span><i className="fas fa-shield-alt"></i> Data Online & Aman</span>

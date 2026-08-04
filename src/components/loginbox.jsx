@@ -6,7 +6,8 @@ function LoginBox({
   password, 
   setPassword, 
   loginError, 
-  onLogin 
+  onLogin,
+  onCancel
 }) {
   return (
     <div className="login-box">
@@ -28,9 +29,14 @@ function LoginBox({
           onChange={(e) => setPassword(e.target.value)} 
           required 
         />
-        <button type="submit" className="btn btn-primary" style={{width:'100%', justifyContent:'center'}}>
-          <i className="fas fa-sign-in-alt"></i> Login
-        </button>
+        <div className="login-actions">
+          <button type="submit" className="btn btn-primary">
+            <i className="fas fa-sign-in-alt"></i> Login
+          </button>
+          <button type="button" className="btn btn-secondary" onClick={onCancel}>
+            <i className="fas fa-times"></i> Batal
+          </button>
+        </div>
       </form>
     </div>
   )

@@ -8,7 +8,6 @@ function DokumenForm({
   kategori, setKategori,
   isi, setIsi,
   file, setFile,
-  filePreview,
   uploading,
   onSave,
   onCancel
@@ -70,7 +69,6 @@ function DokumenForm({
           <label><i className="fas fa-paperclip"></i> File (Max 50MB)</label>
           <input 
             type="file" 
-            id="fileInput"
             onChange={(e) => {
               const selectedFile = e.target.files[0]
               if (selectedFile) {

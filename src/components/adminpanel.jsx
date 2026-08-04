@@ -5,7 +5,6 @@ function AdminPanel({ dokumen }) {
   const totalFiles = dokumen.filter(d => d.file_url && d.file_url.length > 0).length
   const kategoriCount = Object.keys(dokumen.reduce((acc, d) => { acc[d.kategori] = true; return acc }, {})).length
   
-  // Cari tahun terbanyak
   const tahunMap = dokumen.reduce((acc, d) => { 
     acc[d.tahun] = (acc[d.tahun] || 0) + 1; 
     return acc 

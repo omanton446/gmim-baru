@@ -12,7 +12,6 @@ function Dashboard({ dokumen, loading }) {
 
   return (
     <>
-      {/* Statistik */}
       <div className="dashboard">
         <div className="dashboard-card total">
           <div className="dashboard-icon"><i className="fas fa-folder-open"></i></div>
@@ -44,7 +43,6 @@ function Dashboard({ dokumen, loading }) {
         </div>
       </div>
 
-      {/* Tabel Dokumen Terbaru */}
       <div className="table-wrap">
         <h3 className="section-title-mini"><i className="fas fa-list"></i> Dokumen Terbaru</h3>
         <table>
